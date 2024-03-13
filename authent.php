@@ -1,4 +1,9 @@
 <?php
+if(isset($_COOKIE['user']) && isset($_COOKIE['id']))
+{
+    header("location:Profile_edit.php");
+}
+else{
 if(isset($_POST['u_submit']))
 {
     
@@ -23,7 +28,7 @@ if(isset($_POST['u_submit']))
             setcookie("id", "$res[2]",   time() + (10 * 365 * 24 * 60 * 60));
                
 
-            header("location:home.php");
+            header("location:Profile_edit.php");
         }
         else
         {
@@ -43,5 +48,5 @@ else
 {
     echo "Page Not Found";
 }
-
+}
 ?>

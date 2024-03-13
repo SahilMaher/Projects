@@ -2,6 +2,13 @@
 include("Header.html")
 
 ?>
+<?php
+if(isset($_COOKIE['user']) && isset($_COOKIE['id']))
+{
+    header("location:home.php");
+}
+else{
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,3 +123,4 @@ button:hover {
  
 </body>
 </html>
+<?php }?>
