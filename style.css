@@ -58,7 +58,7 @@ body {
 
 .header_nav-links li a {
   color: white;
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .header_nav-links li a:hover {

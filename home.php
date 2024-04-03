@@ -51,6 +51,8 @@ display: inline-flex;
   height: 675px;
   width: 99%;
 }
+
+
        
 
 
@@ -67,7 +69,7 @@ display: inline-flex;
     <div class="h_story">
         <div class="storydiv">
         <img src="uploads/<?php echo$res[0]?>" alt="ProfilePhoto" width="130px" height="100%" />
-      +Add Story<input type="file" name="story" value="File" />
+           <div class="upload_story" style="margin-left: 10px;"><a  style=" text-decoration: none;" href="#">+Add Story</a></div>
         </div>   
         
         </div>
