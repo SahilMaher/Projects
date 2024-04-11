@@ -40,8 +40,10 @@ display: inline-flex;
             margin-left: 5px;
             margin-top: 5px;
             height: 170px;
+            border-radius: 200px;
 
 }
+
        .imgs {
   overflow-x: hidden;  
 
@@ -50,6 +52,12 @@ display: inline-flex;
   border-radius: 5px;
   height: 675px;
   width: 99%;
+}
+.story_img
+{
+          width: 130px;
+          border-radius: 200px;
+            height: 170px;
 }
 
 
@@ -68,12 +76,20 @@ display: inline-flex;
     <div class="imgs">
     <div class="h_story">
         <div class="storydiv">
-        <img src="uploads/<?php echo$res[0]?>" alt="ProfilePhoto" width="130px" height="100%" />
-           <div class="upload_story" style="margin-left: 10px;"><a  style=" text-decoration: none;" href="#">+Add Story</a></div>
+            
+        
+        
         </div>   
         
         </div>
         <hr>
+<div class="media">
+    <?php include("add_media.php");?>
+</div>
+
+
+
+
   <p>scroll down!</p>
   <p>content</p>
   <p>content</p>

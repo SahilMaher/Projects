@@ -24,10 +24,11 @@ if(isset($_POST['u_submit']))
     {
         if($unm == $res[0] && $pass==$res[1])
         {
+        
             setcookie("user", "$unm",   time() + (10 * 365 * 24 * 60 * 60));
             setcookie("id", "$res[2]",   time() + (10 * 365 * 24 * 60 * 60));
-               
-
+         
+            
             header("location:Profile_edit.php");
         }
         else

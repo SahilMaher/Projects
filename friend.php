@@ -13,8 +13,8 @@
     .user_data_img
     {
         border-radius: 90px ;
-    padding: 15px;
-        height: 55%;
+    padding: 20px;
+        height: 45%;
        width: 90px;
         margin-top: 5px;
         margin-left: 5px;
@@ -49,88 +49,106 @@
 
 
 <?php
-if(isset($_COOKIE['id']))
-{
 $con=mysqli_connect("localhost","root","","social_book");
-if($con==false)
+$c_id=$_COOKIE['id'];
+$query=mysqli_query($con,"select * from friend_data");
+
+
+
+$frnd1_arr=array();
+$my_arr=array();
+$i2=0;
+while($row=mysqli_fetch_assoc($query))
 {
-    echo"Connection Error";
+   global $frnd1_arr;
+   global $my_arr;
+   $my_arr[$i2]=$row['my_id'];
+
+
+  
+   $frnd1_arr[$i2]=$row['friend_id'];
+   $i2=$i2+1;
+
+
 }
 
-$query=mysqli_query($con,"select u_id,u_name,u_pro_img from user_data  ");
-$c_id=$_COOKIE['id'];
-if(mysqli_num_rows($query)>0)
+$frnd_id=array();
+$i=0;
+
+
+$q1=mysqli_query($con,"select * from request_send where sender_id=$c_id ");
+if(mysqli_num_rows($q1)>0)
 {
-    $reqquery=mysqli_query($con,"select frnd_id,req_id from req_data where req_id=$c_id");
-    while($row=mysqli_fetch_assoc($query))
+    while($row1=mysqli_fetch_assoc($q1))
     {
-        $u_id=$row['u_id'];
-        
-        if($row['u_id']==$_COOKIE['id'] )
-        {
-            continue;
-        }
- 
+        $id_frnd=$row1['to_id'];
+       global $frnd_id;
+       $frnd_id[$i]=$id_frnd;
+        $i=$i+1;
 
-       if(mysqli_num_rows($reqquery)>0)
-       {
-        while($reqdata=mysqli_fetch_assoc($reqquery))
+
+    }
+   
+   
+
+}
+$size=sizeof($frnd_id);
+$q2=mysqli_query($con,"select * from user_data where u_id!=$c_id");
+
+$num=mysqli_num_rows($q2);
+if($num>0)
+{
+    
+    while($row=mysqli_fetch_assoc($q2))
     {
-        $id=$reqdata['req_id'];
        
-        $req_id=$reqdata['req_id'];
-        $frnd_id=$reqdata['frnd_id'];
-      
-            if($req_id==$_COOKIE['id']  )
-            {
-               continue;
-        
-            }
-            else{
-            
-               
-
-           
-        echo"<div class='user_data'><div>";
-      $img=  $row['u_pro_img'];
-        echo"<img class='user_data_img'  src='uploads/$img'  ></div><div class='user_data_name'>";
-      $name=$row['u_name'];
-      echo"$name";
-      $id=$row['u_id'];
-       echo" </div>";
-           echo"<div>
-       <a href='frnd_profile.php?id=".$id."'><input type='button' value='View' class='btn_view'></a>
-       <a href='request.php?id=".$id."'><input type='button' value='Request' class='btn_view'></a>
-       </div></div>";
-            }
-            
-         }
-        }
-        else
-        {
-            echo"<div class='user_data'><div>";
+          
+                
+        $id=$row['u_id']; 
+        echo"<div class='user_data'><div class='user_div'>";
             $img=  $row['u_pro_img'];
               echo"<img class='user_data_img'  src='uploads/$img' width='150px' ></div><div class='user_data_name'>";
             $name=$row['u_name'];
             echo"$name";
-            $id=$row['u_id'];
+           
              echo" </div>";
-                 echo"<div>
-             <a href='frnd_profile.php?id=".$id."'><input type='button' value='View' class='btn_view'></a>
-             <a href='request.php?id=".$id."'><input type='button' value='Request' class='btn_view'></a>
-             </div></div>";
+                 echo"<div>";
+              
 
-        }
-  
         
-    }
        
+     
+        if(in_array($id,$frnd1_arr) || in_array($id,$my_arr) and in_array($c_id,$frnd1_arr) || in_array($c_id,$my_arr) )
+        {
+            echo"<a href='req_cancel.php?id3=".$id."'><input type='button' value='Unfriend' class='btn_view'></a>";
+        }
+        else
+        {
+            if(in_array($id,$frnd_id))
+            {
+                echo"<a href='req_cancel.php?id=".$id."'><input type='button' value='Cencel' class='btn_view'></a>";
+    
+            }
+            else{
+            echo"<a href='request.php?id=".$id."'><input type='button' value='Add Friend' class='btn_view'></a>";
+            }
+        }
+        
+            echo" </div></div>";
+       
+        
+
+
     }
 }
-
 else
 {
-    echo"<script>alert('Page Not Found')</script>";
+    echo "data not Fond";
 }
+
+
+
+
 ?>
+
 

@@ -50,7 +50,7 @@ include("Header.html")
        
 </div>
 <hr>
-<h3 style="float: right;">Requested</h3>
+<h3 style="float: right;">Friends</h3>
 <div class="req_data">
 <?php include("requested.php");?>
 </div>    

@@ -27,6 +27,7 @@ $res=mysqli_fetch_array($query);
         <p>Bio<br><?php echo$res[4]; ?></p>
 
     </div>
+    
    <a href="Profile_edit.php"> <input type="button" value="Edit"  style=" padding:10px;background-color:cadetblue;width:150px;font-size:20px;border-radius:20px;color:aliceblue; margin-top:8px; "></a>
 
 

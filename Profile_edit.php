@@ -6,6 +6,12 @@
         * {
             font-size: large;
         }
+        .p_img
+        {
+            height: 150px;
+            padding: 10px;
+            border-radius:360px ;
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,8 +36,8 @@
 
                     ?>
                 </div>
-                <div class="p_img">
-                    <img src="uploads/<?php echo $res[1]; ?>" alt="Profile" width="180px" />
+                <div >
+                    <img src="uploads/<?php echo $res[1]; ?>" class="p_img" alt="Profile" width="180px" />
                 </div>
                 <div>
                     Edit:-
@@ -69,6 +75,7 @@ if (isset($_POST['upl'])) {
  
 
     $con = mysqli_connect("localhost", "root", "", "social_book");
+//    $q2=mysqli_query($con,"insert into      ");
     $query = mysqli_query($con, "update user_data set u_pro_img='$filename',u_bio='$bio',u_birthdate='$bd' ,
     u_phone='$num',u_email='$ml',u_name='$name'
 

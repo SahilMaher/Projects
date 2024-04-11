@@ -6,19 +6,14 @@ if(isset($_GET['id']))
      $reqid=$_COOKIE['id'];
     
     $con=mysqli_connect("localhost","root","","social_book");
-    $query=mysqli_query($con,"insert into req_data(req_id,frnd_id) values($reqid,$id)");
-    if($query)
+   
+  
+
+    $q2=mysqli_query($con,"insert into request_send(to_id,sender_id) values($id,$reqid)");
+    if($q2)
     {
         header("location:friend_data.php");
-    }
-    else{
-        echo"Query not working";
-    }
+    }   
+}
     
-
-}
-else
-{
-    echo"Data Not Found";
-}
-?>
+   ?>

@@ -13,8 +13,10 @@ if($con ==false)
 {
     echo"Connection Error";
 }
+
 $query=mysqli_query($con,"insert into user_data(u_email,u_phone,u_name,u_username,u_birthdate,u_password,u_pro_img,u_bio) 
 values('$email',$phone,'$name','$unm','$bdate','$pass','d_user.avif','Hello There') ");
+
 if($query)
 {
     header("location:login.php");
