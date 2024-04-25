@@ -29,7 +29,7 @@
 
     
     .popup {
-        background-color: white;
+        background-color: darkblue;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         padding: 20px;
@@ -79,13 +79,20 @@
     <div class="popup">
         <span class="close" onclick="Closeimagepost()">&times;</span>
         <h2>Add Image </h2>
+        <form method="post" action="uploadStory.php"  enctype="multipart/form-data">
+        <input type="text" placeholder="Enter Caption" name="detail">
         <input type="file" name="image">
+        <input type="submit" value="Add" name="Add" >
+        </form>
     </div>
 </div><div id="Addvideopost" class="overlay">
     <div class="popup">
         <span class="close" onclick="Closevideopost()">&times;</span>
         <h2>Add Video</h2>
+        <form method="post" action="uploadStory.php"  enctype="multipart/form-data">
        <input type="file" name="video">
+       <input type="submit" value="VAdd" >
+        </form>
     </div>
 </div>
 
@@ -114,7 +121,7 @@
 
 <div id="videoPopup" class="overlay">
     <div class="popup">
-        <form method="get" action="#">
+        <form method="post" action="uploadStory.php">
         <span class="close" onclick="closeVideoPopup()">&times;</span>
         <h2>Select Video</h2>
         <input type="file" name="video" accept=".mp4, .avi, .mov, .mkv, .wmv">

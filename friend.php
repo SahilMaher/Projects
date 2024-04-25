@@ -41,7 +41,12 @@
        margin-left: 20px;
        cursor:pointer;
     }
-
+.atag
+{
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
 </style> 
 
 
@@ -105,11 +110,12 @@ if($num>0)
           
                 
         $id=$row['u_id']; 
+        echo"<a href='chat_page.php?id=$id' class='atag'>";
         echo"<div class='user_data'><div class='user_div'>";
             $img=  $row['u_pro_img'];
               echo"<img class='user_data_img'  src='uploads/$img' width='150px' ></div><div class='user_data_name'>";
             $name=$row['u_name'];
-            echo"$name";
+            echo"$name</a>";
            
              echo" </div>";
                  echo"<div>";
@@ -119,9 +125,19 @@ if($num>0)
        
      
         if(in_array($id,$frnd1_arr) || in_array($id,$my_arr) and in_array($c_id,$frnd1_arr) || in_array($c_id,$my_arr) )
+        
         {
+            $q_check=mysqli_query($con,"select * from friend_data where my_id=$id and friend_id=$c_id or my_id=$c_id and friend_id=$id");
+            if(mysqli_num_rows($q_check)>0)
+            {
             echo"<a href='req_cancel.php?id3=".$id."'><input type='button' value='Unfriend' class='btn_view'></a>";
         }
+        else
+        {
+            echo"<a href='request.php?id=".$id."'><input type='button' value='Add Friend' class='btn_view'></a>";
+
+        }
+    }
         else
         {
             if(in_array($id,$frnd_id))

@@ -1,4 +1,5 @@
 <?php
+//for story image
 if(isset($_POST['iadd'] ))
 {
  
@@ -23,18 +24,42 @@ if(isset($_POST['iadd'] ))
 ?>
 <?php
 
-if(isset($_GET['vadd']))
+if(isset($_POST['VAdd']))
 {
-    if(isset($_GET['video'])==" ")
+    echo"k";
+    if(isset($_POST['video'])==" ")
     {
-        echo"<script>alert('Video Not Find')</script>";
-        echo$_GET['video'];
+        // echo"<script>alert('Video Not Find')</script>";
+        // echo$_POST['video'];
+        echo"f";
     }
     else{
-    $img=$_GET['video'];
-    echo $img;
+    // $img=$_POST['video'];
+    // echo $img;
+    echo"l";
     }
 }
+?>
+<?php
+//for image post
+if(isset($_POST['Add']))
+{
 
-
+    $filename = $_FILES["image"]["name"];
+    $tempname = $_FILES["image"]["tmp_name"];
+    $folder = "./uploads/".$filename;
+    move_uploaded_file($tempname, $folder);
+    $id=$_COOKIE['id'];
+    $det=$_POST['detail'];
+    $con=mysqli_connect("localhost","root","","social_book");
+    $query=mysqli_query($con,"insert into post_data(post_id,post_detail,post_path,post_type) values($id,'$det','$filename','image')");
+  
+    if($query)
+    {
+        
+        header('location:home.php');
+    }
+   
+    
+}
 ?>

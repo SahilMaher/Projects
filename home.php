@@ -35,7 +35,7 @@ display: inline-flex;
         } 
         .storydiv 
         {
-            border: 2px solid red;
+            
             width: 130px;
             margin-left: 5px;
             margin-top: 5px;
@@ -45,13 +45,13 @@ display: inline-flex;
 }
 
        .imgs {
-  overflow-x: hidden;  
+  overflow-x:hidden ;  
 
  
   border: solid 5px black;
   border-radius: 5px;
   height: 675px;
-  width: 99%;
+  width: 98%;
 }
 .story_img
 {
@@ -77,49 +77,23 @@ display: inline-flex;
     <div class="h_story">
         <div class="storydiv">
             
-        
+        <?php include("seen_story.php");?>
         
         </div>   
         
         </div>
         <hr>
+
+<div class="imgs">
+
 <div class="media">
     <?php include("add_media.php");?>
 </div>
 
+<?php
+include("post_page.php");
+?>
 
-
-
-  <p>scroll down!</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>content</p>
-  <p>scroll up!</p>
 </div>
 
     
